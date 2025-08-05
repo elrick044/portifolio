@@ -1,0 +1,338 @@
+/* RESET E VARIÁVEIS GLOBAIS */
+:root {
+    --primary-color: #00A78E; /* Um verde/turquesa moderno */
+    --secondary-color: #1a2a3a; /* Azul escuro quase preto */
+    --background-color: #0f172a; /* Fundo principal */
+    --text-color: #cbd5e1; /* Cinza claro para texto */
+    --light-gray: #334155; /* Cinza para cards */
+    --font-primary: 'Roboto', sans-serif;
+    --font-secondary: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+h1, h2, h3 {
+    font-family: var(--font-secondary);
+    color: #fff;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+section {
+    padding: 100px 8%;
+    /* Adicionado para o Intersection Observer funcionar corretamente */
+    min-height: 80vh; 
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #00c2a5;
+    transform: translateY(-3px);
+}
+
+/* ---------------------------------- */
+/* --- MUDANÇAS NO HEADER ABAIXO --- */
+/* ---------------------------------- */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 8%;
+    z-index: 100;
+    /* Adicionada transição para suavizar a mudança de cor */
+    transition: background-color 0.4s ease, box-shadow 0.4s ease; 
+}
+
+/* NOVO: Classe que será adicionada via JavaScript */
+header.scrolled {
+    background-color: rgba(15, 23, 42, 0.9); /* Fundo sólido com leve transparência */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-family: var(--font-secondary);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-menu li {
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.nav-menu a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after,
+/* NOVO: Classe para o link ativo */
+.nav-menu a.active::after {
+    width: 100%;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: #fff;
+}
+
+
+/* SEÇÃO HOME */
+#home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.home-content h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.home-content h2 {
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.social-links {
+    margin-bottom: 30px;
+}
+
+.social-links a {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+/* SEÇÃO SOBRE */
+.about-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-text p {
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.about-skills h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.about-skills ul {
+    list-style: none;
+}
+
+.about-skills li {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.about-skills i {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    color: var(--primary-color);
+}
+
+/* SEÇÃO PROJETOS */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.project-card {
+    background-color: var(--light-gray);
+    padding: 30px;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.project-card p {
+    margin-bottom: 20px;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.project-tech span {
+    background-color: var(--secondary-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    margin-right: 5px;
+    display: inline-block;
+    margin-bottom: 5px; /* Ajuste para quebrar linha corretamente */
+}
+
+/* SEÇÃO JORNADA (TIMELINE) */
+.journey-timeline {
+    position: relative;
+    max-width: 750px;
+    margin: 0 auto;
+}
+.journey-timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: var(--light-gray);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+}
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+}
+.timeline-item:nth-child(odd) {
+    left: 0;
+}
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+.timeline-dot {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    border: 3px solid var(--primary-color);
+    border-radius: 50%;
+    top: 25px;
+    z-index: 1;
+}
+.timeline-item:nth-child(odd) .timeline-dot {
+    right: -8px;
+}
+.timeline-item:nth-child(even) .timeline-dot {
+    left: -8px;
+}
+.timeline-content {
+    padding: 20px 30px;
+    background-color: var(--light-gray);
+    border-radius: 6px;
+    position: relative;
+}
+.timeline-date {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin: 10px 0;
+}
+
+/* SEÇÃO CONTATO */
+#contact {
+    text-align: center;
+}
+
+#contact p {
+    max-width: 500px;
+    margin: 0 auto 30px auto;
+    font-size: 1.1rem;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    h2 { font-size: 2rem; }
+    .nav-menu { display: none; } /* Simplificação para mobile, menu hamburguer seria o próximo passo */
+    
+    .home-content h1 { font-size: 2.5rem; }
+    .home-content h2 { font-size: 1.2rem; }
+
+    .about-container {
+        grid-template-columns: 1fr;
+    }
+
+    .journey-timeline::after { left: 10px; }
+    .timeline-item { width: 100%; padding-left: 40px; padding-right: 0; }
+    .timeline-item:nth-child(even) { left: 0; }
+    .timeline-dot { left: 2px; }
+}
