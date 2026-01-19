@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Criativo - Erick Gonçalves da Silva</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@700&display=swap');
+
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #f5a623;
+            --dark-color: #2d3436;
+            --light-color: #fdfdfd;
+            --text-color: #555;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            color: var(--text-color);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 40px auto;
+            background: var(--light-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        /* --- Barra Lateral (Esquerda) --- */
+        .sidebar {
+            width: 35%;
+            background: linear-gradient(135deg, var(--primary-color), #3a7ac8);
+            color: var(--light-color);
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .profile-name h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            margin: 0;
+        }
+        
+        .profile-name h2 {
+            font-weight: 300;
+            font-size: 1.2em;
+            margin-top: 5px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            padding-top: 10px;
+        }
+
+        .contact-info {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+        }
+
+        .contact-info li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            font-size: 1.2em;
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-info a {
+            color: var(--light-color);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.8;
+        }
+
+        .sidebar-section {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4em;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        .skills-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skills-list li {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin-bottom: 8px;
+            font-weight: 300;
+        }
+        
+        .languages p {
+            margin: 5px 0;
+        }
+        .languages strong {
+            font-weight: 700;
+        }
+
+        /* --- Conteúdo Principal (Direita) --- */
+        .main-content {
+            width: 65%;
+            padding: 50px 40px;
+            overflow-y: auto;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2em;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .section-title i {
+            color: var(--primary-color);
+            font-size: 0.9em;
+            margin-right: 15px;
+        }
+        
+        .summary p {
+            font-size: 1.1em;
+            text-align: justify;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background: #e0e0e0;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--light-color);
+            border: 3px solid var(--primary-color);
+            z-index: 1;
+        }
+
+        .item-title {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        .item-meta {
+            font-size: 0.95em;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .item-date {
+            font-size: 0.85em;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .item-description {
+            text-align: justify;
+        }
+
+        /* --- Print Styles --- */
+        @media print {
+            body {
+                background-color: #fff;
+            }
+            .container {
+                flex-direction: column;
+                box-shadow: none;
+                margin: 0;
+                border-radius: 0;
+            }
+            .sidebar, .main-content {
+                width: 100%;
+                padding: 20px;
+            }
+            .sidebar {
+                background: #f0f2f5;
+                color: var(--dark-color);
+            }
+             .sidebar a {
+                color: var(--primary-color) !important;
+            }
+            .timeline::before {
+                left: -20px;
+            }
+            .timeline-item::before {
+                left: -28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="profile">
+                <div class="profile-name">
+                    <h1>ERICK G. SILVA</h1>
+                    <h2>Full Stack & Mobile Developer</h2>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Contato</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:erickkgsbr@gmail.com">erickkgsbr@gmail.com</a></li>
+                    <li><i class="fas fa-phone"></i> <span>+55 46 99902-9618</span></li>
+                    <li><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/erickgs-dev/" target="_blank">in/erickgs-dev</a></li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Toolkit Principal</h3>
+                <ul class="skills-list">
+                    <li><i class="fab fa-flutter"></i> Flutter & Dart</li>
+                    <li><i class="fab fa-java"></i> Java (Spring, RMI)</li>
+                    <li><i class="fab fa-js"></i> JavaScript (React, Node.js)</li>
+                    <li><i class="fas fa-database"></i> Firebase & SQL/NoSQL</li>
+                    <li><i class="fas fa-network-wired"></i> Redes & Segurança (Cisco)</li>
+                    <li><i class="fab fa-docker"></i> Docker & CI/CD</li>
+                </ul>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Idiomas</h3>
+                <div class="languages">
+                    <p><strong>Português:</strong> Nativo</p>
+                    <p><strong>Inglês:</strong> Intermediário</p>
+                    <p><strong>Espanhol:</strong> Básico</p>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Atividades</h3>
+                 <ul>
+                    <li>Membro, Centro Acadêmico de C.C. (2024-2025)</li>
+                    <li>Vice-Secretário, Interact Club (2021-2022)</li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <section class="summary">
+                <h2 class="section-title"><i class="fas fa-user-circle"></i> Minha Missão</h2>
+                <p>
+                    Profissional curioso com uma base sólida que vai da eletrônica ao desenvolvimento full stack. Minha jornada acadêmica me ensinou a enxergar sistemas de forma holística e a resolver problemas complexos com criatividade. [cite_start]Busco uma oportunidade júnior ou de estágio para transformar conhecimento em resultados, colaborar com equipes inovadoras e gerar valor real desde o início. [cite: 4, 5, 6]
+                </p>
+            </section>
+
+            <section>
+                <h2 class="section-title"><i class="fas fa-rocket"></i> Jornada de Projetos</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4 class="item-title">Desenvolvedor Full Stack (Projeto DevOps)</h4>
+                        <p class="item-meta">UTFPR | React, Node.js, Java Spring, Docker</p>
+                        <p class="item-date">2024 - 2025</p>
+                        <p class="item-description">
+                            Criação de uma plataforma de geofencing para rebanhos. Desenvolvi o front-end em React e duas APIs distintas (Node.js e Java Spring Boot) para gerenciar dados, utilizando PostgreSQL e MongoDB. [cite_start]Explorei práticas de CI/CD com Jenkins e Docker. [cite: 29, 30, 31, 32, 33, 34]
+                        </p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 class="item-title">Arquiteto de E-commerce (Projeto Pessoal)</h4>
+                        <p class="item-meta">Flutter Web | Firebase</p>
+                        <p class="item-date">2022 - 2025</p>
+                        <p class="item-description">
+                            Construí um e-commerce completo com Flutter, integrando pagamentos via Mercado Pago. [cite_start]Desenvolvi o painel administrativo com padrão BLoC e utilizei Firebase (Firestore, Functions, Hosting) para a infraestrutura backend. [cite: 22, 23, 24, 25, 26]
+                        </p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 class="item-title">Desenvolvedor Mobile (Projeto de Pesquisa)</h4>
+                        <p class="item-meta">IFPR | Flutter, ESP32, SQFlite</p>
+                        <p class="item-date">2020 - 2022</p>
+                        <p class="item-description">
+                           Criei o "MelgueiraApp", um aplicativo Flutter que se conectava a um microcontrolador ESP32 para monitorar sensores de temperatura e umidade, auxiliando apicultores. [cite_start]O projeto foi apresentado em múltiplos eventos acadêmicos, como a Latinoware. [cite: 18, 19, 72]
+                        </p>
+                    </div>
+                </div>
+            </section>
+            
+            <section>
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Formação Acadêmica</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4 class="item-title">Bacharelado em Ciência da Computação</h4>
+                        <p class="item-meta">Universidade Tecnológica Federal do Paraná (UTFPR)</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 class="item-title">Técnico em Informática</h4>
+                        <p class="item-meta">Instituto Federal do Paraná (IFPR)</p>
+                        <p class="item-date">2019 - 2022</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="section-title"><i class="fas fa-certificate"></i> Certificações e Cursos</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h4 class="item-title">Cybersecurity Essentials</h4>
+                        <p class="item-meta">Cisco (70h)</p>
+                        <p class="item-date">2025</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 class="item-title">CCNA: Introdução às Redes</h4>
+                        <p class="item-meta">Cisco (70h)</p>
+                        <p class="item-date">2024</p>
+                    </div>
+                     <div class="timeline-item">
+                        <h4 class="item-title">Criação de Apps com Flutter</h4>
+                        <p class="item-meta">Udemy (64h)</p>
+                        <p class="item-date">2022</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
